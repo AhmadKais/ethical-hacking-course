@@ -16,7 +16,7 @@
 | # | מודול | חומר | משימות | מצגת |
 |---|-------|:----:|:------:|:----:|
 | 1 | [מבוא, המעבדה ומתודולוגיה](modules/01-intro-lab-methodology/) | ✅ | ✅ | ✅ |
-| 2 | 🆕 [יסודות Linux](modules/02-linux-fundamentals/) | 🚧 | 🚧 | 🚧 |
+| 2 | 🆕 [יסודות Linux](modules/02-linux-fundamentals/) | ✅ | ✅ | ✅ |
 | 3 | [יסודות רשתות](modules/03-networking/) | ✅ | ✅ | ✅ |
 | 4 | [סקריפטינג: Bash ו-Python](modules/04-scripting-bash-python/) | ✅ | ✅ | ✅ |
 
