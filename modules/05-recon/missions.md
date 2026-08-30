@@ -135,4 +135,7 @@ python3 sublist3r.py -d TARGET.com
 - [ ] זיהיתי תבנית מייל עם hunter.io
 - [ ] הקמתי את Burp Suite ותפסתי בקשה
 
+
+*פתרונות מלאים: [`solutions.md`](solutions.md)*
+
 </div>
