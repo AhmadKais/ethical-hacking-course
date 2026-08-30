@@ -4,7 +4,7 @@
 
 > **מטרות המודול:** לעבור מ-Recon פסיבי לסריקה **אקטיבית** — לשלוט ב-Nmap לעומק, למַנות שירותים (HTTP/HTTPS, SMB, SSH, FTP), להריץ סריקת חולשות עם **Nessus**, ולחקור חולשות עם **Searchsploit / Exploit-DB**. זהו השלב שממפה את משטח התקיפה ומזהה את נקודות הכניסה.
 >
-> **קבצים:** `README.md` · [`missions.md`](missions.md) · [`solutions.md`](solutions.md) · [`slides.md`](slides.md).
+> **קבצים:** `README.md` · [`missions.md`](missions.md) · [`solutions.md`](solutions.md) · [`practice.md`](practice.md) · [`slides.md`](slides.md).
 >
 > **מבוסס על שיעורי המקור** #39–#47 (Kioptrix + Nmap, Enumerating HTTP/SMB/SSH, Researching Vulnerabilities, Nessus).
 
@@ -232,7 +232,7 @@ searchsploit openssh 2.9
 - **תעד הכל** — לניצול ולדוח.
 
 ### מה הלאה?
-➡️ [**תרגילים — `missions.md`**](missions.md) · [**פתרונות — `solutions.md`**](solutions.md)
+➡️ [**תרגילים — `missions.md`**](missions.md) · [**פתרונות — `solutions.md`**](solutions.md) · [**תרגול ותרחישים — `practice.md`**](practice.md)
 ➡️ [**מודול 7 — ניצול והשגת גישה**](../07-exploitation/)
 
 [⬅️ חזרה למפת הקורס](../../README.md)

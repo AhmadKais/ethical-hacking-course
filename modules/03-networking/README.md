@@ -4,7 +4,7 @@
 
 > **מטרות המודול:** להבין לעומק כיצד מחשבים מתקשרים ברשת — מודל OSI ו-TCP/IP, TCP מול UDP ולחיצת היד, כתובות IP (IPv4/IPv6), MAC ו-ARP, פורטים ופרוטוקולים, Subnetting, ופרוטוקולי התשתית (DNS, DHCP, NAT, ICMP). כל זה עם דוגמאות מעשיות ופקודות.
 >
-> **קבצים:** `README.md` · [`missions.md`](missions.md) · [`solutions.md`](solutions.md) · [`slides.md`](slides.md).
+> **קבצים:** `README.md` · [`missions.md`](missions.md) · [`solutions.md`](solutions.md) · [`practice.md`](practice.md) · [`slides.md`](slides.md).
 >
 > **מבוסס על שיעור המקור** #07 ("Networking — 3 hours").
 
@@ -223,7 +223,7 @@ ipcalc 192.168.1.0/24     # חישוב תת-רשת
 - **DNS/DHCP/NAT/ICMP** הם התשתית — וגם יעדים (Spoofing, Zone Transfer).
 
 ### מה הלאה?
-➡️ [**תרגילים — `missions.md`**](missions.md) · [**פתרונות — `solutions.md`**](solutions.md)
+➡️ [**תרגילים — `missions.md`**](missions.md) · [**פתרונות — `solutions.md`**](solutions.md) · [**תרגול ותרחישים — `practice.md`**](practice.md)
 ➡️ [**מודול 4 — סקריפטינג: Bash ו-Python**](../04-scripting-bash-python/)
 
 [⬅️ חזרה למפת הקורס](../../README.md)

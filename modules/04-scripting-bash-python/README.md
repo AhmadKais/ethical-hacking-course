@@ -4,7 +4,7 @@
 
 > **מטרות המודול:** לרכוש את יכולת האוטומציה הנדרשת בבדיקות חדירה — כתיבת סקריפטים ב-**Bash** (שפת ה-Terminal) וב-**Python** (שפת הכלים). נגיע לשני כלים אמיתיים: **Ping Sweep** ב-Bash ו-**Port Scanner** ב-Python.
 >
-> **קבצים:** `README.md` · [`missions.md`](missions.md) · [`solutions.md`](solutions.md) · [`slides.md`](slides.md).
+> **קבצים:** `README.md` · [`missions.md`](missions.md) · [`solutions.md`](solutions.md) · [`practice.md`](practice.md) · [`slides.md`](slides.md).
 >
 > **מבוסס על שיעורי המקור** #10 (Bash Scripting) ו-#11–#29 (Python → Port Scanner).
 
@@ -302,7 +302,7 @@ except socket.gaierror:
 - **Bash** לאוטומציית מערכת מהירה; **Python** לכלים ולוגיקה.
 
 ### מה הלאה?
-➡️ [**תרגילים — `missions.md`**](missions.md) · [**פתרונות — `solutions.md`**](solutions.md)
+➡️ [**תרגילים — `missions.md`**](missions.md) · [**פתרונות — `solutions.md`**](solutions.md) · [**תרגול ותרחישים — `practice.md`**](practice.md)
 ➡️ [**מודול 5 — איסוף מידע**](../05-recon/)
 
 [⬅️ חזרה למפת הקורס](../../README.md)

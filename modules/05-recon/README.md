@@ -6,7 +6,7 @@
 
 > **למה זה הכי חשוב?** ככל שאיסוף המידע יסודי יותר, כך גדל הסיכוי למצוא חולשה ולנצל אותה. בודקי חדירות מנוסים משקיעים חלק ניכר מהזמן דווקא כאן — "מי שמכיר את היעד טוב יותר, מנצח".
 >
-> **קבצים:** `README.md` · [`missions.md`](missions.md) · [`solutions.md`](solutions.md) · [`slides.md`](slides.md).
+> **קבצים:** `README.md` · [`missions.md`](missions.md) · [`solutions.md`](solutions.md) · [`practice.md`](practice.md) · [`slides.md`](slides.md).
 
 ---
 
@@ -183,7 +183,7 @@ python3 sublist3r.py -d tesla.com
 - **Burp Suite** הוא ה-Proxy המרכזי לבדיקת תעבורת Web.
 
 ### מה הלאה?
-➡️ [**תרגילים — `missions.md`**](missions.md) · [**פתרונות — `solutions.md`**](solutions.md)
+➡️ [**תרגילים — `missions.md`**](missions.md) · [**פתרונות — `solutions.md`**](solutions.md) · [**תרגול ותרחישים — `practice.md`**](practice.md)
 ➡️ [**מודול 6 — סריקה, מיפוי והערכת חולשות**](../06-scanning-enumeration/)
 
 [⬅️ חזרה למפת הקורס](../../README.md)

@@ -4,7 +4,7 @@
 
 > **מטרות המודול:** לשלוט בשורת הפקודה של Linux ברמה הנדרשת לבדיקות חדירה — ניווט במערכת הקבצים, ניהול קבצים ותיקיות, הרשאות ומשתמשים, `sudo`, ניהול חבילות ושירותים, פקודות רשת, תהליכים וחיפוש. זהו הבסיס המעשי לכל שאר הקורס.
 >
-> **קבצים:** `README.md` (חומר) · [`missions.md`](missions.md) (תרגילים) · [`solutions.md`](solutions.md) (פתרונות) · [`slides.md`](slides.md) (מצגת).
+> **קבצים:** `README.md` (חומר) · [`missions.md`](missions.md) (תרגילים) · [`solutions.md`](solutions.md) (פתרונות) · [`practice.md`](practice.md) (תרגול) · [`slides.md`](slides.md) (מצגת).
 >
 > **מבוסס על שיעורי המקור** #03–#09 (Sudo, Navigating the Filesystem, Users & Privileges, Common Network Commands, Viewing/Creating/Editing Files, Services, Installing Tools).
 
@@ -331,7 +331,7 @@ cat access.log | grep "404" | sort | uniq -c   # ספירת שגיאות 404
 - **תהליכים** (`ps`, `top`, `kill`) ו-**חיפוש+צינורות** (`find`, `grep`, `|`).
 
 ### מה הלאה?
-➡️ [**תרגילים — `missions.md`**](missions.md) · [**פתרונות — `solutions.md`**](solutions.md)
+➡️ [**תרגילים — `missions.md`**](missions.md) · [**פתרונות — `solutions.md`**](solutions.md) · [**תרגול ותרחישים — `practice.md`**](practice.md)
 ➡️ [**מודול 3 — יסודות רשתות**](../03-networking/)
 
 [⬅️ חזרה למפת הקורס](../../README.md)

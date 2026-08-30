@@ -4,7 +4,7 @@
 
 > **מטרות המודול:** בסיום המודול תבין מהו האקינג אתי לעומק, תכיר את סוגי ההאקרים וסוגי בדיקות החדירה, תשלוט במתודולוגיית חמשת השלבים, תקים מעבדה וירטואלית מבודדת ותפעילה, ותתמצא ב-Kali Linux ובארגז הכלים שלו.
 >
-> **קבצים במודול:** `README.md` (חומר לימוד) · [`missions.md`](missions.md) (תרגילים) · [`solutions.md`](solutions.md) (פתרונות מלאים) · [`slides.md`](slides.md) (מצגת).
+> **קבצים במודול:** `README.md` (חומר לימוד) · [`missions.md`](missions.md) (תרגילים) · [`solutions.md`](solutions.md) (פתרונות) · [`practice.md`](practice.md) (תרגול) · [`slides.md`](slides.md) (מצגת).
 
 ---
 
@@ -246,7 +246,7 @@ sudo apt update && sudo apt full-upgrade -y
 Recon · Enumeration · Vulnerability · Exploit · Payload · Attack Surface · Scope · RoE · CIA Triad · Hypervisor · Snapshot
 
 ### מה הלאה?
-➡️ [**תרגילים — `missions.md`**](missions.md) (קל → קשה) · לאחר מכן [**פתרונות — `solutions.md`**](solutions.md)
+➡️ [**תרגילים — `missions.md`**](missions.md) (קל → קשה) · לאחר מכן [**פתרונות — `solutions.md`**](solutions.md) · [**תרגול ותרחישים — `practice.md`**](practice.md)
 ➡️ המודול הבא: [**מודול 2 — יסודות Linux**](../02-linux-fundamentals/)
 
 [⬅️ חזרה למפת הקורס](../../README.md)
