@@ -10,22 +10,41 @@
 
 ## 📚 מפת הקורס
 
+הקורס **תואם למסלולי ההסמכה המובילים בעולם** (eJPT · PNPT · OSCP). ראה [טבלת ההתאמה המלאה בסילבוס](SYLLABUS.md#-התאמה-לתקנים-עולמיים).
+
+**חלק א' — יסודות**
 | # | מודול | חומר | משימות | מצגת |
 |---|-------|:----:|:------:|:----:|
-| 1 | [מבוא, המעבדה ו-Kali Linux](modules/01-intro-lab-kali/) | ✅ | ✅ | ✅ |
-| 2 | [יסודות רשתות](modules/02-networking/) | ✅ | ✅ | ✅ |
-| 3 | [Python להאקרים](modules/03-python/) | ✅ | ✅ | ✅ |
-| 4 | [איסוף מידע (Reconnaissance)](modules/04-recon/) | ✅ | ✅ | ✅ |
-| 5 | [סריקה ומיפוי (Scanning & Enumeration)](modules/05-scanning-enumeration/) | 🚧 | 🚧 | 🚧 |
-| 6 | [ניצול והשגת גישה (Exploitation)](modules/06-exploitation/) | 🚧 | 🚧 | 🚧 |
-| 7 | [Buffer Overflow](modules/07-buffer-overflow/) | 🚧 | 🚧 | 🚧 |
-| 8 | [Active Directory](modules/08-active-directory/) | 🚧 | 🚧 | 🚧 |
-| 9 | 🆕 [הסלמת הרשאות (Privilege Escalation)](modules/09-privilege-escalation/) | 🚧 | 🚧 | 🚧 |
-| 10 | 🆕 [אבטחת Web — OWASP Top 10](modules/10-web-owasp/) | 🚧 | 🚧 | 🚧 |
-| 11 | 🆕 [תקיפות אלחוטיות (Wireless)](modules/11-wireless/) | 🚧 | 🚧 | 🚧 |
-| 12 | 🆕 [כתיבת דוח ותיעוד (Reporting)](modules/12-reporting/) | 🚧 | 🚧 | 🚧 |
+| 1 | [מבוא, המעבדה ומתודולוגיה](modules/01-intro-lab-methodology/) | ✅ | ✅ | ✅ |
+| 2 | 🆕 [יסודות Linux](modules/02-linux-fundamentals/) | 🚧 | 🚧 | 🚧 |
+| 3 | [יסודות רשתות](modules/03-networking/) | ✅ | ✅ | ✅ |
+| 4 | [סקריפטינג: Bash ו-Python](modules/04-scripting-bash-python/) | ✅ | ✅ | ✅ |
 
-✅ הושלם · 🚧 בבנייה
+**חלק ב' — שרשרת התקיפה**
+| # | מודול | חומר | משימות | מצגת |
+|---|-------|:----:|:------:|:----:|
+| 5 | [איסוף מידע (Reconnaissance)](modules/05-recon/) | ✅ | ✅ | ✅ |
+| 6 | [סריקה, מיפוי והערכת חולשות](modules/06-scanning-enumeration/) | 🚧 | 🚧 | 🚧 |
+| 7 | [ניצול והשגת גישה (Exploitation)](modules/07-exploitation/) | 🚧 | 🚧 | 🚧 |
+| 8 | 🆕 [מתקפות סיסמאות (Password Attacks)](modules/08-password-attacks/) | 🚧 | 🚧 | 🚧 |
+| 9 | 🆕 [אבטחת Web — OWASP Top 10](modules/09-web-owasp/) | 🚧 | 🚧 | 🚧 |
+| 10 | [Buffer Overflow](modules/10-buffer-overflow/) | 🚧 | 🚧 | 🚧 |
+
+**חלק ג' — לאחר הפריצה ותקיפה פנימית**
+| # | מודול | חומר | משימות | מצגת |
+|---|-------|:----:|:------:|:----:|
+| 11 | 🆕 [פוסט-אקספלויטציה והסלמת הרשאות](modules/11-post-exploitation-privesc/) | 🚧 | 🚧 | 🚧 |
+| 12 | 🆕 [Pivoting ותנועה רוחבית](modules/12-pivoting-tunneling/) | 🚧 | 🚧 | 🚧 |
+| 13 | [Active Directory](modules/13-active-directory/) | 🚧 | 🚧 | 🚧 |
+
+**חלק ד' — התמחויות ומקצועיות**
+| # | מודול | חומר | משימות | מצגת |
+|---|-------|:----:|:------:|:----:|
+| 14 | 🆕 [תקיפות אלחוטיות (Wireless)](modules/14-wireless/) | 🚧 | 🚧 | 🚧 |
+| 15 | 🆕 [הנדסה חברתית ופישינג](modules/15-social-engineering/) | 🚧 | 🚧 | 🚧 |
+| 16 | [כתיבת דוח ותיעוד (Reporting)](modules/16-reporting/) | 🚧 | 🚧 | 🚧 |
+
+✅ הושלם · 🚧 בבנייה · 🆕 נוסף להתאמה לתקן העולמי
 
 📄 [**הסילבוס המלא**](SYLLABUS.md) · 🧰 [**מדריך הקמת המעבדה**](resources/lab-setup.md) · 📋 [**דף פקודות מרוכז (Cheat Sheet)**](resources/cheatsheets.md)
 
