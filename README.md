@@ -62,11 +62,15 @@
 ### מבנה כל מודול
 ```
 modules/NN-topic/
-├── README.md      # חומר הלימוד (צעד-אחר-צעד, עם דוגמאות)
+├── README.md      # חומר הלימוד (צעד-אחר-צעד, עם דוגמאות)   → material.pdf
 ├── missions.md    # תרגילים מדורגים (קל→קשה) + אתגר מסכם
-├── solutions.md   # פתרונות מלאים צעד-אחר-צעד
-├── practice.md    # שאלות תרגול (עם תשובות) + תרחיש מהחיים האמיתיים
-└── slides.md      # מצגת סיכום
+├── solutions.md   # פתרונות מלאים צעד-אחר-צעד             → exercises.pdf (missions+solutions)
+├── practice.md    # שאלות תרגול (עם תשובות) + תרחיש אמיתי  → practice.pdf
+├── slides.md      # מצגת (Markdown, נפתחת ישירות ב-GitHub)
+├── slides.pdf     # 🖥️ המצגת כ-PDF — נפתחת ב-GitHub עמוד-אחר-עמוד (להצגה)
+└── slides.pptx    # 📊 המצגת ל-PowerPoint (לעריכה והצגה)
+
+# כל קובצי ה-PDF וה-PPTX נמצאים כעת בתוך תיקיית המודול עצמה — הכול במקום אחד.
 ```
 
 ---
