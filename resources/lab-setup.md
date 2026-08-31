@@ -16,11 +16,23 @@
 
 ---
 
+## 💻 מערכת ההפעלה של המארח (Host OS) — Windows / macOS / Ubuntu
+
+**מערכת ההפעלה שלך לא משנה.** Kali תמיד רצה כ**אורחת (Guest)** בתוך וירטואליזציה, כך שאפשר לארח אותה על **Windows, macOS או Linux (כולל Ubuntu)** באותה צורה בדיוק. כל המעבדה — Kali (התוקף) + מכונות המטרה — רצה כ-VMs על המארח היחיד.
+
+> ✅ **מרצים על Ubuntu:** התקינו **VirtualBox** (חינמי, משתלב מצוין ב-Ubuntu), הריצו את ה-VM של Kali, והציגו לתלמידים בשיתוף מסך — הסביבה זהה ל-1:1 לחומר הקורס.
+> ```bash
+> sudo apt update && sudo apt install virtualbox -y
+> ```
+> ⚠️ **אל תוסיפו את מאגרי ה-APT של Kali ל-Ubuntu** — זה עלול לשבור את המערכת. הריצו את Kali כ-VM, לא כמאגר על Ubuntu.
+
+---
+
 ## 1. תוכנת וירטואליזציה (Hypervisor)
 
 בחר אחת (שתיהן חינמיות לשימוש אישי):
 - **[VMware Workstation Player](https://www.vmware.com/products/workstation-player.html)** (מומלץ בקורס)
-- **[VirtualBox](https://www.virtualbox.org/)**
+- **[VirtualBox](https://www.virtualbox.org/)** (מומלץ במיוחד למארח Ubuntu/Linux)
 
 ---
 
