@@ -46,7 +46,7 @@
 
 ✅ הושלם · 🚧 בבנייה · 🆕 נוסף להתאמה לתקן העולמי
 
-📄 [**הסילבוס המלא**](SYLLABUS.md) · 🧰 [**מדריך הקמת המעבדה**](resources/lab-setup.md) · 📋 [**דף פקודות מרוכז (Cheat Sheet)**](resources/cheatsheets.md)
+📄 [**הסילבוס המלא**](SYLLABUS.md) · 🧰 [**מדריך הקמת המעבדה**](resources/lab-setup.md) · 🖥️ [**מדריך מאויר צעד-אחר-צעד**](resources/lab-setup-illustrated.md) · 📋 [**דף פקודות מרוכז (Cheat Sheet)**](resources/cheatsheets.md)
 
 🎓 **תרגול והערכה:** 🌍 [דוגמאות מהעולם האמיתי](exam/real-world-examples.md) · 📝 [בנק שאלות תרגול](exam/question-bank.md) · 🏆 [מבחן מעשי (PNPT/OSCP-style)](exam/practical-exam.md)
 
