@@ -27,7 +27,7 @@
 | 6 | [סריקה, מיפוי והערכת חולשות](modules/06-scanning-enumeration/) | ✅ | ✅ | ✅ |
 | 7 | [ניצול והשגת גישה (Exploitation)](modules/07-exploitation/) | ✅ | ✅ | ✅ |
 | 8 | 🆕 [מתקפות סיסמאות (Password Attacks)](modules/08-password-attacks/) | ✅ | ✅ | ✅ |
-| 9 | 🆕 [אבטחת Web — OWASP Top 10](modules/09-web-owasp/) | 🚧 | 🚧 | 🚧 |
+| 9 | 🆕 [אבטחת Web — OWASP Top 10](modules/09-web-owasp/) | ✅ | ✅ | ✅ |
 | 10 | [Buffer Overflow](modules/10-buffer-overflow/) | 🚧 | 🚧 | 🚧 |
 
 **חלק ג' — לאחר הפריצה ותקיפה פנימית**
