@@ -1,5 +1,7 @@
 <div dir="rtl">
 
+> 📘 **הכול בגלילה אחת:** [**כל החומר של המודול בקובץ אחד**](כל-החומר.md) — חומר לימוד, תרגילים, תרגול ופתרונות, ברצף.
+
 # מודול 9 — אבטחת אפליקציות Web (OWASP Top 10)
 
 > **מטרות המודול:** לשלוט בחולשות ה-Web הנפוצות ביותר — **OWASP Top 10** — ולתרגל אותן מעשית על סביבות חוקיות (DVWA / OWASP Juice Shop). נתמקד ב-SQL Injection, XSS, Command Injection, Broken Access Control, File Upload/Inclusion, ועוד, עם **Burp Suite** ו-**sqlmap**.

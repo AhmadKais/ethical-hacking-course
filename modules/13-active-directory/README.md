@@ -1,5 +1,7 @@
 <div dir="rtl">
 
+> 📘 **הכול בגלילה אחת:** [**כל החומר של המודול בקובץ אחד**](כל-החומר.md) — חומר לימוד, תרגילים, תרגול ופתרונות, ברצף.
+
 # מודול 13 — Active Directory (AD)
 
 > **מטרות המודול:** לתקוף את הטכנולוגיה שמנהלת את **רוב הארגונים בעולם** — Microsoft Active Directory. נלמד את מבנה ה-Domain, נבצע **Enumeration** (BloodHound), ונשלוט בהתקפות המפתח: **LLMNR Poisoning**, **Kerberoasting**, **Pass-the-Hash**, ו-**AS-REP Roasting** — עד להשתלטות על ה-**Domain Controller (Domain Admin)**.
