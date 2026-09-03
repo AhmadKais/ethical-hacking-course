@@ -28,21 +28,21 @@
 | 7 | [ניצול והשגת גישה (Exploitation)](modules/07-exploitation/) | ✅ | ✅ | ✅ |
 | 8 | 🆕 [מתקפות סיסמאות (Password Attacks)](modules/08-password-attacks/) | ✅ | ✅ | ✅ |
 | 9 | 🆕 [אבטחת Web — OWASP Top 10](modules/09-web-owasp/) | ✅ | ✅ | ✅ |
-| 10 | [Buffer Overflow](modules/10-buffer-overflow/) | 🚧 | 🚧 | 🚧 |
+| 10 | [Buffer Overflow](modules/10-buffer-overflow/) | ✅ | ✅ | ✅ |
 
 **חלק ג' — לאחר הפריצה ותקיפה פנימית**
 | # | מודול | חומר | משימות | מצגת |
 |---|-------|:----:|:------:|:----:|
-| 11 | 🆕 [פוסט-אקספלויטציה והסלמת הרשאות](modules/11-post-exploitation-privesc/) | 🚧 | 🚧 | 🚧 |
-| 12 | 🆕 [Pivoting ותנועה רוחבית](modules/12-pivoting-tunneling/) | 🚧 | 🚧 | 🚧 |
-| 13 | [Active Directory](modules/13-active-directory/) | 🚧 | 🚧 | 🚧 |
+| 11 | 🆕 [פוסט-אקספלויטציה והסלמת הרשאות](modules/11-post-exploitation-privesc/) | ✅ | ✅ | ✅ |
+| 12 | 🆕 [Pivoting ותנועה רוחבית](modules/12-pivoting-tunneling/) | ✅ | ✅ | ✅ |
+| 13 | [Active Directory](modules/13-active-directory/) | ✅ | ✅ | ✅ |
 
 **חלק ד' — התמחויות ומקצועיות**
 | # | מודול | חומר | משימות | מצגת |
 |---|-------|:----:|:------:|:----:|
-| 14 | 🆕 [תקיפות אלחוטיות (Wireless)](modules/14-wireless/) | 🚧 | 🚧 | 🚧 |
-| 15 | 🆕 [הנדסה חברתית ופישינג](modules/15-social-engineering/) | 🚧 | 🚧 | 🚧 |
-| 16 | [כתיבת דוח ותיעוד (Reporting)](modules/16-reporting/) | 🚧 | 🚧 | 🚧 |
+| 14 | 🆕 [תקיפות אלחוטיות (Wireless)](modules/14-wireless/) | ✅ | ✅ | ✅ |
+| 15 | 🆕 [הנדסה חברתית ופישינג](modules/15-social-engineering/) | ✅ | ✅ | ✅ |
+| 16 | [כתיבת דוח ותיעוד (Reporting)](modules/16-reporting/) | ✅ | ✅ | ✅ |
 
 ✅ הושלם · 🚧 בבנייה · 🆕 נוסף להתאמה לתקן העולמי
 
