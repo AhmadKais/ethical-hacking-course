@@ -202,26 +202,27 @@
 כדי לתרגל בבטחה, בונים **מעבדה וירטואלית מבודדת** — מכונות וירטואליות (VMs) הרצות על המחשב, מנותקות מהרשת האמיתית.
 
 ### רכיבי המעבדה
-1. **תוכנת וירטואליזציה (Hypervisor):** VMware Workstation Player או VirtualBox (חינמיים).
+1. **תוכנת וירטואליזציה (Hypervisor):** **VirtualBox** — חינמי, חוצה-פלטפורמות, ו**מומלץ לקורס** (הוא גם הכלי שבמדריך המאויר). חלופה: **VMware Workstation Pro** (מ-2024 חינמי לשימוש אישי).
 2. **מכונת תוקף:** Kali Linux.
 3. **מכונות מטרה:** Metasploitable 2, Kioptrix, ובהמשך מעבדת Windows/AD.
 
-### התקנת Kali — צעד אחר צעד
+> 🖥️ **מדריך מאויר צעד-אחר-צעד (עם צילומי מסך):** [**resources/lab-setup-illustrated.md**](../../resources/lab-setup-illustrated.md) — מומלץ לעקוב אחריו במקביל להתקנה, כולל פתרון תקלות נפוצות.
+
+### התקנת Kali על VirtualBox — צעד אחר צעד
 ```text
-1. גלוש ל- kali.org ← Get Kali ← Virtual Machines
-2. הורד את דמות ה-VM (VMware או VirtualBox), בהתאם למעבד (64-bit)
-3. התקן VMware Workstation Player מהאתר הרשמי
-4. חלץ (Extract) את קובץ ה-VM שהורדת
-5. VMware ← Player ← File ← Open ← בחר את קובץ ה-.vmx של Kali
-6. Edit Virtual Machine Settings:
-      Memory (RAM): 2GB לפחות (מומלץ 4GB אם יש 8GB+)
-      Processors:   2 ליבות
-7. Play Virtual Machine
+1. התקן VirtualBox מהאתר הרשמי:  virtualbox.org
+2. גלוש ל- kali.org ← Get Kali ← Virtual Machines ← לשונית VirtualBox
+3. הורד את דמות ה-VirtualBox של Kali (64-bit) — קובץ .7z
+4. חלץ (Extract) את הקובץ עם 7-Zip → יתקבלו קובצי .vbox ו-.vdi
+5. VirtualBox ← Machine ← Add ← בחר את קובץ ה-.vbox של Kali
+6. Settings → System:  RAM 2GB לפחות (מומלץ 4GB אם יש 8GB+), 2 ליבות (CPU)
+7. Start (הפעל את המכונה)
 8. התחברות: משתמש kali / סיסמה kali
 ```
+> 💡 **חלופה — VMware Workstation Pro** (חינמי לשימוש אישי מ-2024): הורד את דמות ה-VMware מ-kali.org, פתח ב-`File → Open` את קובץ ה-`.vmx`, והפעל. שאר ההגדרות (RAM, רשת, Snapshot) זהות ברעיון.
 
 ### הגדרת רשת מבודדת — קריטי! 🔒
-ב-`VM → Settings → Network Adapter` בחר **Host-Only** או **NAT**:
+ב-VirtualBox: `Settings → Network → Adapter 1` (ב-VMware: `VM → Settings → Network Adapter`) בחר **Host-Only** או **NAT**:
 
 | מצב רשת | משמעות | מתי |
 |---------|--------|-----|
@@ -230,7 +231,7 @@
 | **Bridged** | ה-VM מקבל IP ברשת הביתית האמיתית | ⚠️ **הימנע** — חושף את הרשת |
 
 ### Snapshots — הרגל שיציל אותך
-לפני כל שינוי משמעותי, ב-VMware: `VM → Snapshot → Take Snapshot`. אם משהו נשבר — חוזרים בלחיצה. **קח Snapshot מיד אחרי התקנה נקייה של Kali.**
+לפני כל שינוי משמעותי, ב-VirtualBox: `Machine → Take Snapshot` (ב-VMware: `VM → Snapshot → Take Snapshot`). אם משהו נשבר — חוזרים בלחיצה. **קח Snapshot מיד אחרי התקנה נקייה של Kali.**
 
 > 💡 **פתרון תקלות נפוצות:**
 > - *"VT-x is disabled"* — יש להפעיל וירטואליזציה ב-BIOS/UEFI.

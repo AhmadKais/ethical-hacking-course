@@ -73,7 +73,7 @@
 
 ## הקמת המעבדה
 
-- **Hypervisor** — VMware / VirtualBox (חינמי)
+- **Hypervisor** — VirtualBox / VMware (חינמי)
 - **תוקף** — Kali Linux · **מטרות** — Metasploitable, Kioptrix
 - רשת: **NAT / Host-Only** (לא Bridged!) 🔒
 - **Snapshot** נקי מיד אחרי התקנה

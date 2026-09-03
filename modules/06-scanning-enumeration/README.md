@@ -33,7 +33,7 @@
 
 > 💡 **כלל הזהב של המנייה:** *"Enumerate, enumerate, enumerate"*. 90% מהעבודה כאן. כל פורט פתוח = שירות = חולשה פוטנציאלית. אל תמהר לניצול לפני מנייה יסודית.
 
-**מכונת התרגול בקורס:** **Kioptrix Level 1** (מ-[VulnHub](https://www.vulnhub.com)) — מכונה פגיעה בכוונה, מצוינת לתרגול. הורד, טען ב-VMware באותה רשת (Host-Only) כמו Kali.
+**מכונת התרגול בקורס:** **Kioptrix Level 1** (מ-[VulnHub](https://www.vulnhub.com)) — מכונה פגיעה בכוונה, מצוינת לתרגול. הורד, טען ב-VirtualBox (או VMware) באותה רשת (Host-Only) כמו Kali.
 
 ---
 

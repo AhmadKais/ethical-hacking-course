@@ -78,7 +78,7 @@ modules/NN-topic/
 ## 🧰 דרישות מקדימות
 
 - **חומרה:** 16GB RAM מומלץ (8GB מינימום), ~100GB דיסק פנוי, וירטואליזציה מופעלת ב-BIOS.
-- **תוכנה:** [VMware Workstation Player](https://www.vmware.com) או [VirtualBox](https://www.virtualbox.org) (חינמי).
+- **תוכנה:** [VirtualBox](https://www.virtualbox.org) (חינמי, מומלץ) — או VMware Workstation Pro (חינמי לשימוש אישי מ-2024). ראה [מדריך הקמת המעבדה המאויר](resources/lab-setup-illustrated.md).
 - **ידע קודם:** אין. הקורס מתחיל מאפס.
 
 ---

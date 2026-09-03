@@ -41,7 +41,7 @@ White Hat פועל **בהרשאה מלאה** ובחוזה. Grey Hat פועל **�
 ## חלק ב' — הקמת הסביבה
 
 **פתרון 2.1 — התקנה**
-עקוב אחר סעיף 1.7 ב-[README](README.md#17-הקמת-המעבדה-lab-setup). לאחר `Play Virtual Machine`, התחבר עם `kali`/`kali`. פתח Terminal מסרגל הכלים או בקיצור `Ctrl+Alt+T`.
+עקוב אחר סעיף 1.7 ב-[README](README.md#17-הקמת-המעבדה-lab-setup) (או ה[מדריך המאויר](../../resources/lab-setup-illustrated.md)). לאחר `Start` (הפעלת המכונה ב-VirtualBox), התחבר עם `kali`/`kali`. פתח Terminal מסרגל הכלים או בקיצור `Ctrl+Alt+T`.
 
 **פתרון 2.2 — עדכון**
 ```bash
@@ -61,7 +61,7 @@ inet 192.168.152.130/24
 - (אם קיבלת `10.x.x.x` → טווח **10.0.0.0/8**; אם `172.16–31.x.x` → **172.16.0.0/12**.)
 
 **פתרון 2.4 — Snapshot**
-`VM → Snapshot → Take Snapshot`, שם: `Kali-clean-install`.
+ב-VirtualBox: `Machine → Take Snapshot`, שם: `Kali-clean-install`.
 **למה חשוב:** אם תקיפה/עדכון ישברו את המערכת, אפשר לחזור למצב תקין בשנייה במקום להתקין מחדש.
 
 ---

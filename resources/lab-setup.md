@@ -33,8 +33,8 @@
 ## 1. תוכנת וירטואליזציה (Hypervisor)
 
 בחר אחת (שתיהן חינמיות לשימוש אישי):
-- **[VMware Workstation Player](https://www.vmware.com/products/workstation-player.html)** (מומלץ בקורס)
-- **[VirtualBox](https://www.virtualbox.org/)** (מומלץ במיוחד למארח Ubuntu/Linux)
+- **[VirtualBox](https://www.virtualbox.org/)** (**מומלץ בקורס** — חינמי, חוצה-פלטפורמות, מתאים במיוחד למארח Ubuntu/Linux)
+- **VMware Workstation Pro** (חלופה — חינמי לשימוש אישי מ-2024)
 
 ---
 
