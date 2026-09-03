@@ -124,7 +124,7 @@ generic_send_tcp <windows-ip> 9999 spike_trun.spk 0 0
 #!/usr/bin/python3
 import socket, time, sys
 
-ip = "192.168.1.50"
+ip = "192.168.56.50"
 port = 9999
 buffer = "A" * 100
 

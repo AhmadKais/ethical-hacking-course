@@ -28,7 +28,7 @@
 ```bash
 # ב-Windows: הפעל vulnserver.exe (מאזין על 9999)
 # ב-Kali:
-nc 192.168.1.50 9999      # החלף ב-IP של Windows
+nc 192.168.56.50 9999      # החלף ב-IP של Windows
 HELP
 ```
   👀 **חפש:** רשימת פקודות שהשרת מדפיס (TRUN, STATS, GMON...). רשום 3 מהן.
