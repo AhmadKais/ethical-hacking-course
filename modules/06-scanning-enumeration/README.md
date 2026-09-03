@@ -42,15 +42,15 @@
 **Nmap (Network Mapper)** הוא הכלי המרכזי לסריקה. נתחיל ב**גילוי מארחים** (מי חי ברשת):
 
 ```bash
-nmap -sn 192.168.1.0/24        # Host Discovery בלבד (ping sweep), ללא סריקת פורטים
+nmap -sn 192.168.56.0/24        # Host Discovery בלבד (ping sweep), ללא סריקת פורטים
 ```
 
 סריקת פורטים בסיסית על יעד:
 ```bash
-nmap 192.168.1.10              # 1000 הפורטים הנפוצים
-nmap -p- 192.168.1.10          # כל 65,535 הפורטים (איטי אך יסודי)
-nmap -p 80,443,445 192.168.1.10  # פורטים ספציפיים
-nmap -F 192.168.1.10           # מהיר (100 פורטים)
+nmap 192.168.56.10              # 1000 הפורטים הנפוצים
+nmap -p- 192.168.56.10          # כל 65,535 הפורטים (איטי אך יסודי)
+nmap -p 80,443,445 192.168.56.10  # פורטים ספציפיים
+nmap -F 192.168.56.10           # מהיר (100 פורטים)
 ```
 
 ### סוגי סריקה עיקריים
@@ -70,15 +70,15 @@ nmap -F 192.168.1.10           # מהיר (100 פורטים)
 מציאת פורט פתוח היא רק ההתחלה. עכשיו מְמַנים אותו:
 
 ```bash
-nmap -sV 192.168.1.10          # Version Detection — גרסאות השירותים
-nmap -O 192.168.1.10           # Operating System detection
-nmap -sC 192.168.1.10          # סקריפטים ברירת מחדל (NSE)
-nmap -A 192.168.1.10           # אגרסיבי: -sV -O -sC + traceroute
+nmap -sV 192.168.56.10          # Version Detection — גרסאות השירותים
+nmap -O 192.168.56.10           # Operating System detection
+nmap -sC 192.168.56.10          # סקריפטים ברירת מחדל (NSE)
+nmap -A 192.168.56.10           # אגרסיבי: -sV -O -sC + traceroute
 ```
 
 **הסריקה המומלצת להתחלה** (משלב הכל):
 ```bash
-nmap -sC -sV -oN scan.txt 192.168.1.10
+nmap -sC -sV -oN scan.txt 192.168.56.10
 ```
 - `-sC` סקריפטים · `-sV` גרסאות · `-oN scan.txt` שמירת פלט לקובץ.
 
@@ -94,15 +94,15 @@ PORT    STATE SERVICE VERSION
 
 ### NSE — Nmap Scripting Engine
 ```bash
-nmap --script vuln 192.168.1.10          # חיפוש חולשות ידועות
-nmap --script smb-enum-shares 192.168.1.10
-nmap -p 445 --script smb-vuln-ms17-010 192.168.1.10   # בדיקת EternalBlue
+nmap --script vuln 192.168.56.10          # חיפוש חולשות ידועות
+nmap --script smb-enum-shares 192.168.56.10
+nmap -p 445 --script smb-vuln-ms17-010 192.168.56.10   # בדיקת EternalBlue
 ```
 הסקריפטים ב-`/usr/share/nmap/scripts/`.
 
 ### שמירת פלט
 ```bash
-nmap -sC -sV -oA fullscan 192.168.1.10   # -oA = כל הפורמטים (.nmap/.gnmap/.xml)
+nmap -sC -sV -oA fullscan 192.168.56.10   # -oA = כל הפורמטים (.nmap/.gnmap/.xml)
 ```
 
 ---
@@ -112,16 +112,16 @@ nmap -sC -sV -oA fullscan 192.168.1.10   # -oA = כל הפורמטים (.nmap/.g
 אם פורט 80/443 פתוח — יש שרת web. זהו לרוב משטח התקיפה הגדול ביותר.
 
 ```bash
-whatweb http://192.168.1.10              # זיהוי טכנולוגיות
-nikto -h http://192.168.1.10             # סורק חולשות web נפוצות
+whatweb http://192.168.56.10              # זיהוי טכנולוגיות
+nikto -h http://192.168.56.10             # סורק חולשות web נפוצות
 ```
 
 ### גילוי ספריות וקבצים נסתרים (Directory Brute-Force)
 ```bash
-gobuster dir -u http://192.168.1.10 -w /usr/share/wordlists/dirb/common.txt
+gobuster dir -u http://192.168.56.10 -w /usr/share/wordlists/dirb/common.txt
 # חלופות:
-dirb http://192.168.1.10
-feroxbuster -u http://192.168.1.10
+dirb http://192.168.56.10
+feroxbuster -u http://192.168.56.10
 ```
 מחפש נתיבים נסתרים כמו `/admin`, `/backup`, `/config`, `/robots.txt`.
 
@@ -139,16 +139,16 @@ feroxbuster -u http://192.168.1.10
 **SMB (Server Message Block)** — פרוטוקול שיתוף קבצים של Windows, על פורטים **139/445**. נפוץ מאוד ברשתות פנימיות, ומקור לחולשות חמורות.
 
 ```bash
-enum4linux -a 192.168.1.10               # מנייה מקיפה (משתמשים, שיתופים, קבוצות)
-smbclient -L //192.168.1.10/             # רשימת שיתופים (Shares)
-smbclient //192.168.1.10/share           # התחברות לשיתוף
-nmap -p 139,445 --script smb-enum-shares,smb-enum-users 192.168.1.10
+enum4linux -a 192.168.56.10               # מנייה מקיפה (משתמשים, שיתופים, קבוצות)
+smbclient -L //192.168.56.10/             # רשימת שיתופים (Shares)
+smbclient //192.168.56.10/share           # התחברות לשיתוף
+nmap -p 139,445 --script smb-enum-shares,smb-enum-users 192.168.56.10
 ```
 
 ### חולשות SMB מפורסמות
 - **MS17-010 (EternalBlue)** — חולשה קריטית ששימשה במתקפת **WannaCry**. עדיין נמצאת במערכות רבות.
 ```bash
-nmap -p 445 --script smb-vuln-ms17-010 192.168.1.10
+nmap -p 445 --script smb-vuln-ms17-010 192.168.56.10
 ```
 - **SMB Null Session** — התחברות ללא אימות, חושפת משתמשים ושיתופים.
 
@@ -160,15 +160,15 @@ nmap -p 445 --script smb-vuln-ms17-010 192.168.1.10
 
 ### SSH (פורט 22)
 ```bash
-nmap -p 22 -sV 192.168.1.10              # גרסת OpenSSH
-ssh user@192.168.1.10                     # ניסיון התחברות
+nmap -p 22 -sV 192.168.56.10              # גרסת OpenSSH
+ssh user@192.168.56.10                     # ניסיון התחברות
 ```
 גרסה ישנה = חולשה אפשרית. SSH הוא גם יעד מרכזי ל-**Brute Force** (מודול 8).
 
 ### FTP (פורט 21)
 ```bash
-nmap -p 21 -sV --script ftp-anon 192.168.1.10   # בדיקת התחברות אנונימית
-ftp 192.168.1.10                                  # נסה user: anonymous
+nmap -p 21 -sV --script ftp-anon 192.168.56.10   # בדיקת התחברות אנונימית
+ftp 192.168.56.10                                  # נסה user: anonymous
 ```
 - **Anonymous FTP** — אם מאופשר, מאפשר גישה לקבצים ללא סיסמה — פרס נפוץ.
 

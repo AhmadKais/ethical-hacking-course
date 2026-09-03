@@ -10,25 +10,25 @@
 
 **6.1**
 ```bash
-nmap -sn 192.168.1.0/24     # התאם לתת-הרשת שלך
+nmap -sn 192.168.56.0/24     # התאם לתת-הרשת שלך
 ```
 זהה את ה-IP שאינו Kali/Gateway — זהו Kioptrix.
 
 **6.2**
 ```bash
-nmap 192.168.1.10
+nmap 192.168.56.10
 ```
 פורטים אופייניים ב-Kioptrix 1: **22 (ssh), 80 (http), 111 (rpcbind), 139 (netbios), 443 (https)**.
 
 **6.3**
 ```bash
-nmap -sV -oN kioptrix_scan.txt 192.168.1.10
+nmap -sV -oN kioptrix_scan.txt 192.168.56.10
 ```
 תוצאה אופיינית: `Apache httpd 1.3.20 ((Unix) mod_ssl/2.8.4 OpenSSL/0.9.6b)`, `OpenSSH 2.9p2`, `Samba`.
 
 **6.4**
 ```bash
-nmap -p- 192.168.1.10
+nmap -p- 192.168.56.10
 ```
 לעיתים מתגלה פורט Samba גבוה נוסף שלא היה ב-1000 הנפוצים.
 
@@ -38,26 +38,26 @@ nmap -p- 192.168.1.10
 
 **6.5**
 ```bash
-whatweb http://192.168.1.10
-nikto -h http://192.168.1.10
+whatweb http://192.168.56.10
+nikto -h http://192.168.56.10
 ```
 `nikto` יחשוף לרוב את גרסת mod_ssl הפגיעה ואת OpenSSL 0.9.6b (חולשה ידועה), וקבצים/הגדרות מיושנים.
 
 **6.6**
 ```bash
-gobuster dir -u http://192.168.1.10 -w /usr/share/wordlists/dirb/common.txt
+gobuster dir -u http://192.168.56.10 -w /usr/share/wordlists/dirb/common.txt
 ```
 תוצאות אופייניות: `/usage`, `/manual`, `/mrtg`, `/cgi-bin`.
 
 **6.7**
 ```bash
-enum4linux -a 192.168.1.10
+enum4linux -a 192.168.56.10
 ```
 חושף את גרסת ה-Samba (למשל **Samba 2.2.1a**) — גרסה זו פגיעה ל-Exploit ידוע (trans2open).
 
 **6.8**
 ```bash
-nmap -p 445 --script smb-vuln-ms17-010 192.168.1.10
+nmap -p 445 --script smb-vuln-ms17-010 192.168.56.10
 ```
 ב-Kioptrix 1 (לינוקס ישן) לרוב **לא** פגיע ל-MS17-010 (זו חולשת Windows) — אך זהו תרגול חשוב לזהות מתי כן/לא. על מכונת Windows פגיעה, הסקריפט ידווח `VULNERABLE`.
 
@@ -87,7 +87,7 @@ searchsploit samba 2.2
 
 ```markdown
 # דוח מנייה — Kioptrix Level 1
-IP: 192.168.1.10 | OS: Linux (Kernel 2.4, Red Hat)
+IP: 192.168.56.10 | OS: Linux (Kernel 2.4, Red Hat)
 
 ## פורטים
 | פורט | שירות | גרסה | הערה |
