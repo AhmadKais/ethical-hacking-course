@@ -18,8 +18,8 @@ ls
 **2.2** — שתי דרכים לחזור הביתה:
 ```bash
 cd ~     # דרך 1: הקיצור לבית
-cd /home/kali   # דרך 2: נתיב מוחלט
-# (גם cd בלי ארגומנטים מחזיר הביתה)
+cd       # דרך 2: cd ללא ארגומנט מחזיר תמיד הביתה
+# (גם נתיב מוחלט עובד: cd /home/$USER — $USER הוא שם המשתמש שלך)
 ```
 
 **2.3**
@@ -35,7 +35,7 @@ ls -lah ~     # l=פירוט, a=מוסתרים, h=גדלים קריאים
 
 ---
 
-## חלק ב' — קבצים ותיקיות
+## חלק ב' — קבצים, תיקיות ועריכה
 
 **2.5**
 ```bash
@@ -54,13 +54,26 @@ cat lab/notes.txt
 ```
 > ⚠️ שים לב: `>` היה דורס את השורה הראשונה; `>>` שומר עליה.
 
-**2.7**
+**2.7** — עריכה עם nano ויציאה מ-vim:
+```bash
+nano lab/notes.txt
+#   הוסף שורה → Ctrl+O (שמירה) → Enter → Ctrl+X (יציאה)
+cat lab/notes.txt          # ודא שהשורה נשמרה
+
+vim lab/notes.txt
+#   יציאה בלי לשמור:  Esc  ואז  :q!  ו-Enter
+#   יציאה עם שמירה:   Esc  ואז  :wq  ו-Enter
+#   (למצב עריכה ב-vim: מקש  i  ; לחזרה למצב פקודות: Esc)
+```
+> 💡 הפחד מ-vim הוא מיתוס: **Esc** מחזיר תמיד למצב פקודות, `:q!` יוצא בלי לשמור, `:wq` שומר ויוצא. זה כל הסוד.
+
+**2.8**
 ```bash
 cp lab/notes.txt /tmp/
 mv /tmp/notes.txt /tmp/backup.txt
 ```
 
-**2.8**
+**2.9**
 ```bash
 mkdir -p project/recon/results   # -p יוצר את כל השרשרת
 ```
@@ -69,13 +82,13 @@ mkdir -p project/recon/results   # -p יוצר את כל השרשרת
 
 ## חלק ג' — הרשאות, משתמשים ו-sudo
 
-**2.9**
+**2.10**
 ```bash
 id
 # למשל: uid=1000(kali) gid=1000(kali) groups=1000(kali),27(sudo)...
 ```
 
-**2.10**
+**2.11**
 ```bash
 touch run.sh
 chmod +x run.sh
@@ -83,13 +96,13 @@ ls -l run.sh
 # -rwxr-xr-x ... run.sh   ← ה-x מופיע
 ```
 
-**2.11** — פענוח `-rwxr-x---`:
+**2.12** — פענוח `-rwxr-x---`:
 - בעלים: `rwx` = קריאה+כתיבה+הרצה
 - קבוצה: `r-x` = קריאה+הרצה
 - כולם: `---` = כלום
 - ערך Octal: **750** (7=rwx, 5=r-x, 0=---)
 
-**2.12**
+**2.13**
 ```bash
 sudo -l
 ```
@@ -99,13 +112,13 @@ sudo -l
 
 ## חלק ד' — חבילות, שירותים ורשת
 
-**2.13**
+**2.14**
 ```bash
 sudo apt update
 sudo apt install tree -y
 ```
 
-**2.14**
+**2.15**
 ```bash
 python3 -m http.server 8000
 # בטרמינל שני:
@@ -113,30 +126,30 @@ curl http://127.0.0.1:8000
 # מקבלים HTML של רשימת הקבצים → השרת עונה
 ```
 
-**2.15**
+**2.16**
 ```bash
 ip a                 # מציאת ה-IP (שורת inet תחת eth0)
 ip route             # ה-Gateway (default via X.X.X.X)
 ping -c 4 <gateway>  # בדיקת קישוריות
 ```
 
-**2.16**
+**2.17**
 ```bash
-ss -tuln
-# t=TCP, u=UDP, l=מאזינים, n=מספרים במקום שמות
+ss -tulpn
+# t=TCP, u=UDP, l=מאזינים, p=תהליך, n=מספרים במקום שמות
 ```
 
 ---
 
 ## חלק ה' — חיפוש וצינורות
 
-**2.17**
+**2.18**
 ```bash
-find / -perm -4000 2>/dev/null
+find / -perm -4000 -type f 2>/dev/null
 # -perm -4000 = ביט SUID; 2>/dev/null מסתיר שגיאות "Permission denied"
 ```
 
-**2.18**
+**2.19**
 ```bash
 cat /etc/passwd | wc -l
 # או ישירות:
@@ -144,9 +157,9 @@ wc -l /etc/passwd
 # כל שורה = משתמש אחד
 ```
 
-**2.19**
+**2.20**
 ```bash
-grep "bash" /etc/passwd
+grep bash /etc/passwd
 # מציג משתמשים שה-shell שלהם /bin/bash (חשבונות אינטראקטיביים)
 ```
 
@@ -163,13 +176,13 @@ whoami; id; sudo -l
 ip a; ip route; cat /etc/resolv.conf
 
 # 3. פורטים מאזינים
-ss -tuln
+ss -tulpn
 
 # 4. וקטור הסלמה — קובצי SUID
-find / -perm -4000 2>/dev/null
+find / -perm -4000 -type f 2>/dev/null
 
 # 5. משתמשים עם shell
-grep "bash" /etc/passwd
+grep bash /etc/passwd
 ```
 
 **דוגמת מסקנה:** "המשתמש שלי חבר בקבוצת `sudo`, ו-`sudo -l` הראה הרשאה להריץ `/usr/bin/find` כ-root ללא סיסמה. זהו מסלול ההסלמה המבטיח ביותר — ניתן לנצל את `find` עם `-exec` כדי להריץ פקודות כ-root (GTFOBins). לחלופין, נבדוק את קובצי ה-SUID החריגים שנמצאו."
