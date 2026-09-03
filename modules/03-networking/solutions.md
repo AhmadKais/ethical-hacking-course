@@ -62,6 +62,7 @@ ip neigh     # (או arp -a)
 - מסכה: **255.255.255.0**
 - מארחים שמישים: **254** (פחות כתובת הרשת וה-Broadcast)
 ```bash
+sudo apt install ipcalc -y     # אם צריך
 ipcalc 10.10.50.0/24
 ```
 
