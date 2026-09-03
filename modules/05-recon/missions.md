@@ -97,6 +97,8 @@ python3 sublist3r.py -d TARGET.com
 3. בדוק מייל אחד לתקינות ב-[email-checker.net](https://email-checker.net) או דומה.
 4. בדוק דומיין/מייל ב-[HaveIBeenPwned](https://haveibeenpwned.com).
 
+> 💡 **ללא הרשמה:** hunter.io דורש חשבון חינמי ומגביל תוצאות. חלופה מ-Kali בלי הרשמה — `theHarvester -d <domain> -b bing,duckduckgo,crtsh` (ראה README §5.10) אוסף מיילים ושמות ישירות.
+
 **✅ קריטריון הצלחה:** זיהית את תבנית המייל של הארגון.
 
 > ⚠️ אין לשלוח מיילים, לנסות התחברות או לבצע פעולה כלשהי עם המידע — זהו תרגול OSINT פסיבי בלבד.

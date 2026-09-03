@@ -216,8 +216,10 @@ whois example.com
 dig example.com A MX TXT +short
 
 # 2. איסוף מיילים, שמות ותת-דומיינים במכה אחת (theHarvester):
-theHarvester -d example.com -b all
-#   -d = דומיין · -b = מקורות (all = כל מנועי החיפוש/מאגרים)
+theHarvester -d example.com -b bing,duckduckgo,crtsh
+#   -d = דומיין · -b = מקורות (מנועי חיפוש/מאגרים).
+#   טיפ: אפשר גם -b all, אך אז יופיעו שגיאות "missing API key"
+#   למקורות שדורשים מפתח — זה תקין, פשוט התעלם מהן.
 
 # 3. תת-דומיינים ייעודי:
 sublist3r -d example.com
