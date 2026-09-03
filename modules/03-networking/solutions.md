@@ -8,7 +8,7 @@
 
 ## חלק א' — ידע ומודלים
 
-**3.1 — 7 שכבות OSI (7→1):**
+**3.1 — 7 שכבות OSI (מלמעלה למטה):**
 7. Application (HTTP) · 6. Presentation (TLS) · 5. Session (RPC) · 4. Transport (TCP/UDP) · 3. Network (IP) · 2. Data Link (Ethernet/ARP) · 1. Physical (כבל/Wi-Fi).
 
 **3.2 — שיוך לשכבות:**

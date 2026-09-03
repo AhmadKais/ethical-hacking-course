@@ -55,7 +55,7 @@ ping -c 4 8.8.8.8
 ping -c 4 google.com
 ```
   👀 **חפש:** לפני התשובה מ-google.com מופיע ה-IP שלו — **DNS** תרגם את השם ל-IP.
-  ✅ הצלחה: הבנת ש-DNS ביצע את התרגום שם→IP. *(אם מקבל `Destination Host Unreachable` — אתה כנראה ב-Host-Only; עבור ל-NAT.)*
+  ✅ הצלחה: הבנת ש-DNS ביצע את התרגום משם לכתובת IP. *(אם מקבל `Destination Host Unreachable` — אתה כנראה ב-Host-Only; עבור ל-NAT.)*
 
 **3.8** 🟡 — הצג את טבלת ה-ARP של המכונה.
 ```bash

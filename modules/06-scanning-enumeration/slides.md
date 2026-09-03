@@ -71,7 +71,7 @@
 
 ## סיכום מודול 6
 
-- Nmap = הליבה (פורטים→גרסאות→NSE)
+- Nmap = הליבה (פורטים → גרסאות → NSE)
 - מנייה לפי שירות: HTTP/SMB/SSH/FTP
 - Nessus עוזר; searchsploit מגשר ל-Exploit
 - **תעד הכל** לדוח
