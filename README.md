@@ -48,6 +48,8 @@
 
 📄 [**הסילבוס המלא**](SYLLABUS.md) · 🧰 [**מדריך הקמת המעבדה**](resources/lab-setup.md) · 🖥️ [**מדריך מאויר צעד-אחר-צעד**](resources/lab-setup-illustrated.md) · 🏫 [**בקשת התקנה ל-IT (מכללה)**](resources/it-setup-request.md) · 📋 [**דף פקודות מרוכז (Cheat Sheet)**](resources/cheatsheets.md)
 
+🔥 **למרצה:** [**מדריך הוראה מעשית — איך להפוך את הקורס למרתק**](resources/מדריך-הוראה-מעשית.md) (גיימיפיקציה, הדגמות "וואו", וכלים שמושכים סטודנטים)
+
 🎓 **תרגול והערכה:** 🌍 [דוגמאות מהעולם האמיתי](exam/real-world-examples.md) · 📝 [בנק שאלות תרגול](exam/question-bank.md) · 🏆 [מבחן מעשי (PNPT/OSCP-style)](exam/practical-exam.md)
 
 ---
