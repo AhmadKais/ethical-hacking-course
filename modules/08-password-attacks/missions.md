@@ -19,6 +19,16 @@
 
 ---
 
+## 🎮 האתגר הגדול — Crack the Hash
+
+> CTF של פיצוח, עם ניקוד. מקבלים Hashes — ומפצחים כמה שיותר, מהמהיר לקשה. ממכר.
+
+[**TryHackMe — Crack the Hash**](https://tryhackme.com/room/crackthehash) (חינם).
+  🏆 **תחרות כיתתית:** פצח את כל ה-Hashes ברמה 1, וכמה שיותר ברמה 2. לוח תוצאות על הלוח!
+  ✅ הצלחה: פיצחת MD5, SHA, NTLM ועוד — ושולט ב-hashcat/john.
+
+---
+
 ## חלק א' — Hashes ו-Wordlists (🟢🟡)
 
 **8.1** 🟢 — מצא את `rockyou.txt`, חלץ אם דחוס, וספור סיסמאות.

@@ -18,6 +18,15 @@
 
 ---
 
+## 🎮 האתגר הגדול — Own the Domain
+
+> היעד הכי מבוקש בהאקינג: להשתלט על דומיין שלם. [**TryHackMe — Attacktive Directory**](https://tryhackme.com/room/attacktivedirectory) לוקח אותך מ"אין אישורים" ל-**Domain Admin**.
+
+  🏆 **אתגר:** השג Domain Admin ולכד את הדגלים. תעד את השרשרת: LLMNR → Kerberoast → PtH → DCSync.
+  ✅ הצלחה: "Game Over" — שלטת בכל הדומיין (בדיוק בחינת ה-AD של PNPT/OSCP).
+
+---
+
 ## חלק א' — יסודות ו-Enumeration (🟢🟡)
 
 **13.1** — הסבר: מהו Domain Controller, ולמה השתלטות עליו = שליטה בכל הארגון?

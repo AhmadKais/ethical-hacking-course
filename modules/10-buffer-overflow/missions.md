@@ -18,6 +18,15 @@
 
 ---
 
+## 🎮 האתגר הגדול — טקס המעבר של OSCP
+
+> זה האתגר שכל האקר זוכר: לכתוב Exploit מאפס ולקבל Shell דרך גלישת חוצץ. [**TryHackMe — Buffer Overflow Prep**](https://tryhackme.com/room/bufferoverflowprep) (Tib3rius) מספק 10 בינאריים לתרגול, מהקל לקשה — הכול מוכן בענן.
+
+  🏆 **אתגר:** השלם Exploit מלא לפחות ל-`OVERFLOW1` — מ-Fuzzing ועד Shell.
+  ✅ הצלחה: כתבת BOF עובד לבד — אתה מוכן לחלק ה-BOF של בחינת OSCP.
+
+---
+
 ## חלק א' — הבנת המבנה (🟢)
 
 **10.1** — הסבר במילים שלך מה תפקידם של **EIP** ו-**ESP**. מדוע EIP הוא המטרה של תוקף BOF?
