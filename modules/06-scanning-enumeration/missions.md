@@ -11,6 +11,10 @@
 > - **נתקעת?** זה בסדר גמור. נסה לבד ~10 דקות, קרא שוב את הסעיף המתאים ב-README, ורק אז הצץ ב-[`solutions.md`](solutions.md) — שם יש **פתרון מלא צעד-אחר-צעד לכל תרגיל**. אחרי שניסית — אין בושה להציץ.
 > - **טיפ זהב:** רשום כל פקודה שהרצת ואת התוצאה. זה יחסוך לך זמן בהמשך ובכתיבת הדוח (מודול 16).
 
+> ### 🌐 איפה לתרגל — שתי דרכים
+> - ☁️ **TryHackMe** (בדפדפן, ללא התקנה): [**Nmap**](https://tryhackme.com/room/furthernmap) · [**Vulnversity**](https://tryhackme.com/room/vulnversity) · "Basic Pentesting"
+> - 🐧 **Kali (מקומי):** **Kioptrix** / **Metasploitable** ברשת Host-Only + `nmap`, `nikto`, `gobuster`.
+
 מקרא רמות: 🟢 קל · 🟡 בינוני · 🟠 מתקדם · 🔴 אתגר
 
 ---

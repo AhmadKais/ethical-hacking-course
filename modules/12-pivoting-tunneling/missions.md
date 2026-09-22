@@ -10,6 +10,10 @@
 > - **נתקעת?** nmap לא עובד דרך proxychains? כמעט תמיד חסרים `-sT` ו-`-Pn`. נסה, ואז הצץ ב-[`solutions.md`](solutions.md).
 > - **טיפ:** צייר תמיד את מפת הרשת (מי רואה את מי) — זה מבהיר את כל ה-Pivoting.
 
+> ### 🌐 איפה לתרגל — שתי דרכים
+> - ☁️ **TryHackMe** (בדפדפן, ללא התקנה): [**Wreath**](https://tryhackme.com/room/wreath) (רשת מלאה לתרגול Pivoting)
+> - 🐧 **Kali (מקומי):** מעבדת רב-רשתות (Kali + Pivot דו-רשתי + יעד פנימי) + SSH/`proxychains`/Chisel.
+
 מקרא רמות: 🟢 קל · 🟡 בינוני · 🟠 מתקדם · 🔴 אתגר
 
 ---

@@ -11,6 +11,10 @@
 > - **נתקעת?** סדיקה נכשלת? ודא שסוג ה-Hash (`-m`/`--format`) נכון ושה-wordlist קיים. נסה, ואז הצץ ב-[`solutions.md`](solutions.md).
 > - **טיפ:** רוב הסיסמאות ה"פרוצות" פשוט נמצאות ב-rockyou. זיהוי נכון של סוג ה-Hash הוא חצי מהעבודה.
 
+> ### 🌐 איפה לתרגל — שתי דרכים
+> - ☁️ **TryHackMe** (בדפדפן, ללא התקנה): [**Crack the Hash**](https://tryhackme.com/room/crackthehash) · "Hydra"
+> - 🐧 **Kali (מקומי):** `john`, `hashcat`, `hydra` מותקנים ב-Kali; יעד מקוון: **Metasploitable**.
+
 מקרא רמות: 🟢 קל · 🟡 בינוני · 🟠 מתקדם · 🔴 אתגר
 
 ---

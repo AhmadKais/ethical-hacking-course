@@ -11,6 +11,10 @@
 > - **נתקעת?** נסה ~10 דקות, קרא שוב את הסעיף ב-README, ואז הצץ ב-[`solutions.md`](solutions.md) — יש שם **פתרון מלא צעד-אחר-צעד**.
 > - **טיפ:** צלם מסך של כל חולשה שמצאת — זה יהיה ה-PoC בדוח (מודול 16).
 
+> ### 🌐 איפה לתרגל — שתי דרכים
+> - ☁️ **TryHackMe** (בדפדפן, ללא התקנה): [**OWASP Top 10**](https://tryhackme.com/room/owasptop10) · [**OWASP Juice Shop**](https://tryhackme.com/room/owaspjuiceshop)
+> - 🐧 **Kali (מקומי):** **DVWA** + **Juice Shop** דרך Docker (ראה תרגיל 9.1) + Burp/sqlmap.
+
 מקרא רמות: 🟢 קל · 🟡 בינוני · 🟠 מתקדם · 🔴 אתגר
 
 ---

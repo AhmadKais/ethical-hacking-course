@@ -11,6 +11,10 @@
 > - **נתקעת?** קרא שוב את הסעיף ב-README (יש שם טבלאות עזר), ואז הצץ ב-[`solutions.md`](solutions.md). אם פקודה מחזירה `command not found` — התקן אותה עם `sudo apt install <שם> -y`.
 > - **טיפ:** רשת היא הבסיס לכל סריקה — אם משהו לא ברור, אל תתקדם עד שהבנת.
 
+> ### 🌐 איפה לתרגל — שתי דרכים
+> - ☁️ **TryHackMe** (בדפדפן, ללא התקנה): [**Network Fundamentals**](https://tryhackme.com/module/network-fundamentals) · "Wireshark: The Basics"
+> - 🐧 **Kali (מקומי):** **Wireshark** מקומי + מכונת **Metasploitable** לתעבורה לדוגמה.
+
 מקרא רמות: 🟢 קל · 🟡 בינוני · 🟠 מתקדם · 🔴 אתגר
 
 ---
