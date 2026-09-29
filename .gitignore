@@ -9,3 +9,16 @@ Thumbs.db
 __pycache__/
 *.pyc
 .venv/
+
+# runtime artifacts from module demos
+harvested.log
+linux-ctf/
+privesc-lab/
+*.cap
+bof_demo
+report.md
+summary.md
+hello.sh
+ping_sweep.sh
+port_scanner.py
+pws.txt

