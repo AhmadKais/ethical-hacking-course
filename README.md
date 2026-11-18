@@ -72,11 +72,15 @@
 
 ✅ הושלם · 🚧 בבנייה · 🆕 נוסף להתאמה לתקן העולמי
 
-📄 [**הסילבוס המלא**](SYLLABUS.md) · 🧰 [**מדריך הקמת המעבדה**](resources/lab-setup.md) · 🖥️ [**מדריך מאויר צעד-אחר-צעד**](resources/lab-setup-illustrated.md) · 🏫 [**בקשת התקנה ל-IT (מכללה)**](resources/it-setup-request.md) · 📋 [**דף פקודות מרוכז (Cheat Sheet)**](resources/cheatsheets.md)
+📄 [**הסילבוס המלא**](SYLLABUS.md) · 🧰 [**מדריך הקמת המעבדה**](resources/lab-setup.md) · 🖥️ [**מדריך מאויר צעד-אחר-צעד**](resources/lab-setup-illustrated.md) · 🏫 [**בקשת התקנה ל-IT (מכללה)**](resources/it-setup-request.md) · 📋 [**דף פקודות מרוכז (Cheat Sheet)**](resources/cheatsheets.md) · 🔗 [**קישורים וסרטונים**](resources/קישורים-וסרטונים.md)
 
 🔥 **למרצה:** [**מדריך הוראה מעשית — איך להפוך את הקורס למרתק**](resources/מדריך-הוראה-מעשית.md) (גיימיפיקציה, הדגמות "וואו", וכלים שמושכים סטודנטים)
 
 🎓 **תרגול והערכה:** 🌍 [דוגמאות מהעולם האמיתי](exam/real-world-examples.md) · 📝 [בנק שאלות תרגול](exam/question-bank.md) · 🏆 [מבחן מעשי (PNPT/OSCP-style)](exam/practical-exam.md)
+
+🚀 **מוכנות לשוק העבודה:** 🌍 [מעבדות עולם-אמיתי — מסלול חדרים לכל מודול (TryHackMe/HTB/PortSwigger)](resources/מעבדות-עולם-אמיתי.md) · 🎖️ [מפת הסמכות (eJPT→PNPT→OSCP)](resources/מפת-הסמכות.md) · 💼 [הכנה לראיון עבודה](exam/הכנה-לראיון.md)
+
+🏴 **תרגיל גמר (Capstone):** [**בדיקת חדירה מלאה ל-"ACME Corp"**](capstone-ctf/) — סימולציית עבודה אמיתית: Recon→SQLi→RCE→פיצוח סיסמאות→Pivot→הסלמת הרשאות→Domain Admin→דוח. שש דגלים, הכול מקומי (`python3 acme_range.py`), עם מסלול מודרך ומסלול ריאליסטי.
 
 ---
 
